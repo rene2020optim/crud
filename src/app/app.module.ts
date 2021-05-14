@@ -11,6 +11,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { ReadComponent } from './read/read.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 const config = {
@@ -31,12 +35,14 @@ const config = {
     ReadComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, 
     AngularFireAuthModule, 
-    AngularFireStorageModule
+    AngularFireStorageModule, NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

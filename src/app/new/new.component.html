@@ -1,1 +1,57 @@
-<p>new works!</p>
+<div class="container">
+   <h2>Nuevo Empleado</h2>
+    <form>
+        <div class="form-group">
+           <div class="row">
+          <label class="w-25">Nombre</label>
+            <input [ngModelOptions]="{standalone:true}" [(ngModel)]="name" type="email" class="form-control w-25">
+          </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+          <label class="w-25" >Fecha de Nacimiento</label>
+          <div class="input-group w-25 pr-0 pl-0">
+          <input [ngModelOptions]="{standalone:true}" class="form-control" placeholder="dd/mm/yyyy"
+                 [(ngModel)]="date1" ngbDatepicker #d2="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+       <label class="w-25">Pais</label>
+        <select class="form-select w-25" aria-label="Default select example">
+            
+            <option [value]="i.numericCode" *ngFor="let i of countries"> {{i.name}}</option>
+           
+          </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+       <label class="w-25">Nombre de Usuario</label>
+         <input [ngModelOptions]="{standalone:true}" [(ngModel)]="usuario" class="form-control w-25">
+       </div>
+     </div>
+     <div class="form-group">
+        <div class="row">
+      <label class="w-25" >Fecha de Contratacion</label>
+      <div class="input-group w-25 pr-0 pl-0">
+      <input [ngModelOptions]="{standalone:true}" class="form-control" placeholder="dd/mm/yyyy"
+             [(ngModel)]="date2" ngbDatepicker #d3="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button"></button>
+      </div>
+    </div>
+    </div>
+    </div>
+    
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
