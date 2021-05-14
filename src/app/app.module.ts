@@ -8,6 +8,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NewComponent } from './new/new.component';
+import { EditComponent } from './edit/edit.component';
+import { ReadComponent } from './read/read.component';
 
 
 const config = {
@@ -22,7 +25,10 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    NewComponent,
+    EditComponent,
+    ReadComponent
   ],
   imports: [
     BrowserModule,
