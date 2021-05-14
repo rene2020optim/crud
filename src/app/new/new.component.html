@@ -1,16 +1,22 @@
-<div class="container">
-   <h2>Nuevo Empleado</h2>
-    <form>
+<div class="container mt-5">
+<h2>Nuevo Empleado</h2>
+</div>
+<div class="container mt-5">
+  
+    <form class="needs-validation" novalidate >
+    <div class="row">
+       <div class="col mr-4">
         <div class="form-group">
            <div class="row">
-          <label class="w-25">Nombre</label>
-            <input [ngModelOptions]="{standalone:true}" [(ngModel)]="name" type="email" class="form-control w-25">
+          <label for="validationCustom03" class="form-label w-50">Nombre</label>
+            <input id="validationCustom03" [ngModelOptions]="{standalone:true}" [(ngModel)]="name" type="email" class="form-control w-50" required>
+           
           </div>
         </div>
         <div class="form-group">
             <div class="row">
-          <label class="w-25" >Fecha de Nacimiento</label>
-          <div class="input-group w-25 pr-0 pl-0">
+          <label class="w-50" >Fecha de Nacimiento</label>
+          <div class="input-group w-50 pr-0 pl-0">
           <input [ngModelOptions]="{standalone:true}" class="form-control" placeholder="dd/mm/yyyy"
                  [(ngModel)]="date1" ngbDatepicker #d2="ngbDatepicker">
           <div class="input-group-append">
@@ -21,8 +27,8 @@
         </div>
         <div class="form-group">
             <div class="row">
-       <label class="w-25">Pais</label>
-        <select class="form-select w-25" aria-label="Default select example">
+       <label class="w-50">Pais</label>
+        <select class="form-select w-50" aria-label="Default select example">
             
             <option [value]="i.numericCode" *ngFor="let i of countries"> {{i.name}}</option>
            
@@ -31,14 +37,14 @@
     </div>
     <div class="form-group">
         <div class="row">
-       <label class="w-25">Nombre de Usuario</label>
-         <input [ngModelOptions]="{standalone:true}" [(ngModel)]="usuario" class="form-control w-25">
+       <label class="w-50">Nombre de Usuario</label>
+         <input [ngModelOptions]="{standalone:true}" [(ngModel)]="usuario" class="form-control w-50">
        </div>
      </div>
      <div class="form-group">
         <div class="row">
-      <label class="w-25" >Fecha de Contratacion</label>
-      <div class="input-group w-25 pr-0 pl-0">
+      <label class="w-50" >Fecha de Contratacion</label>
+      <div class="input-group w-50 pr-0 pl-0">
       <input [ngModelOptions]="{standalone:true}" class="form-control" placeholder="dd/mm/yyyy"
              [(ngModel)]="date2" ngbDatepicker #d3="ngbDatepicker">
       <div class="input-group-append">
@@ -47,8 +53,61 @@
     </div>
     </div>
     </div>
+    <div class="form-group">
+ <div class="row">
+     <label class="w-50" >Estado</label>
+    <div class="custom-control custom-switch w-50">
+        <input type="checkbox" class="custom-control-input" id="customSwitches" checked>
+        <label class="custom-control-label" for="customSwitches"></label>
+      </div>
+    </div>
+</div>
+     <div class="row">
+        <button class="btn btn-outline-secondary w-25 mr-3" routerLink="/list">Atras</button>
     
-       
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary w-25">Guardar</button>
+    </div>
+     </div> 
+     <div class="col ml-4">
+        <div class="form-group">
+            <div class="row">
+           <label class="w-25">Area</label>
+           <div class="input-group w-50">
+            <button [class.selected] = "area == 'Administrativa'" class="btn btn-outline-secondary " (click)="areaSelect('Administrativa')" type="button">Administrativa</button>
+            <button [class.selected] = "area == 'Tecnologia'" class="btn btn-outline-secondary"  (click)="areaSelect('Tecnologia')" type="button">Tecnologia</button>
+           
+          </div>
+           </div>
+         </div>
+
+         <div class="form-group">
+          <div class="row">
+     <label class="w-25">Cargo</label>
+      <select (change)="onChangePosition($event)" *ngIf="area == 'Administrativa'" class="form-select w-50" aria-label="Default select example">
+        <option selected>No seleccionado</option>
+          <option [value]="i.name" *ngFor="let i of options1"> {{i.name}}</option>
+          
+        </select>
+        <select (change)="onChangePosition($event)" *ngIf="area == 'Tecnologia'" class="form-select w-50" aria-label="Default select example">
+          <option selected>No seleccionado</option>
+          <option [value]="i.name" *ngFor="let i of options2"> {{i.name}}</option>
+          
+        </select>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+<label class="w-25">Comision</label>
+
+
+<input (change)="onChangeCommission($event)" type="range" class="form-range w-50" min="0" max="100" value="10">
+<label class="w-25">{{commission}}%</label>
+</div>
+</div>
+
+        
+    </div> 
+</div> 
       </form>
 </div>
