@@ -12,8 +12,9 @@ import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { ReadComponent } from './read/read.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 
 
@@ -35,6 +36,9 @@ const config = {
     ReadComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    NgBootstrapFormValidationModule.forRoot(),
+    NgBootstrapFormValidationModule,
     HttpClientModule,
     FormsModule,
     BrowserModule,

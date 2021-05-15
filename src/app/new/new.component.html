@@ -3,50 +3,57 @@
 </div>
 <div class="container mt-5">
   
-    <form class="needs-validation" novalidate >
+    <form [formGroup]="fg" (validSubmit)="onSubmit()" >
     <div class="row">
        <div class="col mr-4">
         <div class="form-group">
            <div class="row">
-          <label for="validationCustom03" class="form-label w-50">Nombre</label>
-            <input id="validationCustom03" [ngModelOptions]="{standalone:true}" [(ngModel)]="name" type="email" class="form-control w-50" required>
+          <label  class="form-label w-50">Nombre</label>
+            <input formControlName="Name" type="text" class="form-control w-50">
            
           </div>
         </div>
         <div class="form-group">
-            <div class="row">
+         <div class="row">
           <label class="w-50" >Fecha de Nacimiento</label>
           <div class="input-group w-50 pr-0 pl-0">
-          <input [ngModelOptions]="{standalone:true}" class="form-control" placeholder="dd/mm/yyyy"
-                 [(ngModel)]="date1" ngbDatepicker #d2="ngbDatepicker">
+          <input formControlName="DateBorn" class="form-control" placeholder="yyyy/mm/dd"
+                 ngbDatepicker #d2="ngbDatepicker">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
           </div>
+         
         </div>
+       
         </div>
+        <div class="custom-error" *ngIf="fg.getError('invalid_age', ['DateBorn']) as error">
+          Edad Minima 18 años
         </div>
+        
+    </div>
+       
         <div class="form-group">
             <div class="row">
        <label class="w-50">Pais</label>
-        <select class="form-select w-50" aria-label="Default select example">
+        <select formControlName="Country" class="form-select w-50" aria-label="Default select example">
             
-            <option [value]="i.numericCode" *ngFor="let i of countries"> {{i.name}}</option>
-           
+            <option [value]="i.name" *ngFor="let i of countries"> {{i.name}}</option>
+            
           </select>
         </div>
     </div>
     <div class="form-group">
         <div class="row">
        <label class="w-50">Nombre de Usuario</label>
-         <input [ngModelOptions]="{standalone:true}" [(ngModel)]="usuario" class="form-control w-50">
+         <input formControlName="Username" type="text" class="form-control w-50">
        </div>
      </div>
      <div class="form-group">
         <div class="row">
       <label class="w-50" >Fecha de Contratacion</label>
       <div class="input-group w-50 pr-0 pl-0">
-      <input [ngModelOptions]="{standalone:true}" class="form-control" placeholder="dd/mm/yyyy"
-             [(ngModel)]="date2" ngbDatepicker #d3="ngbDatepicker">
+      <input formControlName="DateContract" class="form-control" placeholder="yyyy/mm/dd"
+             ngbDatepicker #d3="ngbDatepicker">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button"></button>
       </div>
@@ -57,7 +64,7 @@
  <div class="row">
      <label class="w-50" >Estado</label>
     <div class="custom-control custom-switch w-50">
-        <input type="checkbox" class="custom-control-input" id="customSwitches" checked>
+        <input formControlName="Status" type="checkbox" class="custom-control-input" id="customSwitches">
         <label class="custom-control-label" for="customSwitches"></label>
       </div>
     </div>
@@ -106,7 +113,7 @@
 </div>
 </div>
 
-        
+
     </div> 
 </div> 
       </form>
