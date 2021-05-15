@@ -78,7 +78,7 @@ export class NewComponent implements OnInit {
   onSubmit() {
     const timeDiff = Math.abs(Date.now() - new Date(this.fg.value.Birthday.year, this.fg.value.Birthday.month-1, this.fg.value.Birthday.day).getTime());
       this.age = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
-    console.log(this.age);
+    
     if(this.position =='Fundador y CEO'){
       let user={
         name:this.fg.value.Name,
@@ -113,7 +113,7 @@ export class NewComponent implements OnInit {
     }
   }
   ageRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
-    console.log(control)
+    
     if(control.value !== undefined && isNaN(control.value)){
     const timeDiff = Math.abs(Date.now() - new Date(control.value.year, control.value.month-1, control.value.day).getTime());
       var age = Math.floor((timeDiff / (1000 * 3600 * 24))/365);

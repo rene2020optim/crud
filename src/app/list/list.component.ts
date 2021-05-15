@@ -51,6 +51,7 @@ delete(i:any){
 }
 see(){
   
+  this.router.navigate([])
 }
 sortEventOnParent(e:any){
   this.property=e.property

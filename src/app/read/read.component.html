@@ -1,1 +1,110 @@
-<p>read works!</p>
+<div class="container mt-5">
+    <h2>Ver: {{user.name}}</h2>
+    </div>
+    <div class="container mt-5">
+      
+        <form [formGroup]="fg" (validSubmit)="onSubmit()" >
+        <div class="row">
+           <div class="col mr-4">
+            <div class="form-group">
+             <div class="row">
+              <label class="w-50" >Fecha de Nacimiento</label>
+              <div class="input-group w-50 pr-0 pl-0">
+              <input readonly formControlName="Birthday" class="form-control" placeholder="yyyy/mm/dd"
+                     ngbDatepicker >
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" type="button"></button>
+              </div>
+             
+            </div>
+           
+            </div>
+          
+        </div>
+           
+            <div class="form-group">
+                <div class="row">
+           <label class="w-50">Pais</label>
+            <select [attr.disabled]="true" readonly="true" formControlName="Country" class="form-select w-50" aria-label="Default select example">
+                
+                <option [value]="i.name" *ngFor="let i of countries"> {{i.name}}</option>
+                
+              </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+           <label class="w-50">Nombre de Usuario</label>
+             <input [attr.disabled]="true" formControlName="Username" type="text" class="form-control w-50">
+           </div>
+         </div>
+         <div class="form-group">
+            <div class="row">
+          <label class="w-50" >Fecha de Contratacion</label>
+          <div class="input-group w-50 pr-0 pl-0">
+          <input readonly formControlName="DateContract" class="form-control" placeholder="yyyy/mm/dd"
+                 ngbDatepicker #d3="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" type="button"></button>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="form-group">
+     <div class="row">
+         <label class="w-50" >Estado</label>
+        <div class="custom-control custom-switch w-50">
+            <input [attr.disabled]="true" formControlName="Status" type="checkbox" class="custom-control-input" id="customSwitches">
+            <label class="custom-control-label" for="customSwitches"></label>
+          </div>
+        </div>
+    </div>
+         <div class="row">
+            <button class="btn btn-outline-secondary w-25 mr-3" routerLink="/list">Atras</button>
+        
+           
+        </div>
+         </div> 
+         <div class="col ml-4">
+          <div class="form-group">
+            <div class="row">
+            <label class="w-25" >Area</label>
+            <mbsc-segmented-group class="input-group w-75" formControlName="Area">
+                <mbsc-segmented  *ngIf="user.area == 'Administrativa'" value="Administrativa">Administrativa</mbsc-segmented>
+                <mbsc-segmented  *ngIf="user.area == 'Tecnologia'" value="Tecnologia">Tecnologia</mbsc-segmented>
+               
+            </mbsc-segmented-group> 
+          </div>
+        </div>
+           
+             <div class="form-group">
+              <div class="row">
+         <label class="w-25">Cargo</label>
+          <select formControlName="Position" [attr.disabled]="true" (change)="onChangePosition($event)" *ngIf="user.area == 'Administrativa'" class="form-select w-50" aria-label="Default select example">
+          
+              <option [value]="i.name" *ngFor="let i of options1"> {{i.name}}</option>
+              
+            </select>
+            <select formControlName="Position" [attr.disabled]="true" (change)="onChangePosition($event)" *ngIf="user.area == 'Tecnologia'" class="form-select w-50" aria-label="Default select example">
+            
+              <option [value]="i.name" *ngFor="let i of options2"> {{i.name}}</option>
+              
+            </select>
+            
+          </div>
+      </div>
+    
+      <div *ngIf="this.user.cargo=='Fundador y CEO'" class="form-group">
+        <div class="row">
+    <label class="w-25">Comision</label>
+    <input  [attr.disabled]="true" formControlName="Commission" (change)="onChangeCommission($event)" type="range" class="form-range w-50" min="0" max="100" value="10">
+    <label class="w-25">{{this.user.commission}}%</label>
+    </div>
+    </div>
+    
+    
+        </div> 
+    </div> 
+          </form>
+    </div>
+    

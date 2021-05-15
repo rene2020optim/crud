@@ -45,7 +45,8 @@
             <td><div class="d-flex justify-content-center">{{user.data.age}}</div></td>
             <td><div class="d-flex justify-content-center">{{user.data.dateContract}}</div></td>
             <td><div class="d-flex justify-content-center"><span style="cursor: pointer;" (click)="edit()" class="material-icons home">create</span>
-              <span style="cursor: pointer;" (click)="see()"class="material-icons home">remove_red_eye</span>
+              <a [routerLink]="['/read',user.data]"> <span style="cursor: pointer;color: black;" class="material-icons home">remove_red_eye</span> </a> 
+             
               <span style="cursor: pointer;" (click)="delete(user)" class="material-icons home">delete</span></div>
             </td>
           </tr>
