@@ -9,8 +9,8 @@
             <div class="d-flex justify-content-center h-100 mb-4">
                
                 <div class="searchbar">
-                  <input class="search_input" type="text" name="" placeholder="Search">
-                  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                  <input [(ngModel)]="search" id="listSearch" class="search_input" type="text" name="" placeholder="Search">
+                  <a href="" class="search_icon"><i class="fas fa-search"></i></a>
                 </div>
               </div>
 
@@ -30,14 +30,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users ">
+          <tr *ngFor="let user of users | LockFilter: 'name': search">
            
-            <td>{{user.name}} {{user.cargo}} </td>
-            <td>{{user.age}}</td>
-            <td>{{user.dateContract}}</td>
-            <td><span class="material-icons home">create</span>
-              <span class="material-icons home">remove_red_eye</span>
-              <span class="material-icons home">delete</span>
+            <td>{{user.data.name}} {{user.data.cargo}} </td>
+            <td>{{user.data.age}}</td>
+            <td>{{user.data.dateContract}}</td>
+            <td><span style="cursor: pointer;" (click)="edit()" class="material-icons home">create</span>
+              <span style="cursor: pointer;" (click)="see()"class="material-icons home">remove_red_eye</span>
+              <span style="cursor: pointer;" (click)="delete(user)" class="material-icons home">delete</span>
             </td>
           </tr>
          

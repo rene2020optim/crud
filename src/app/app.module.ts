@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 import { MbscModule } from '@mobiscroll/angular';
+import { LockFilterPipe } from './pipe/pipe';
 
 
 const config = {
@@ -30,6 +31,7 @@ const config = {
 };
 @NgModule({
   declarations: [
+    LockFilterPipe,
     AppComponent,
     ListComponent,
     NewComponent,

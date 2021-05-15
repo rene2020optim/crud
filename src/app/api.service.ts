@@ -14,6 +14,9 @@ export class ApiService {
   return this.db.collection('users').add(user);
  }
  getUsers(){
-  return this.db.collection('users').valueChanges();
+  return this.db.collection('users').snapshotChanges();
+ }
+ delete(id:any){
+  return this.db.collection('users').doc(id).delete();
  }
 }
