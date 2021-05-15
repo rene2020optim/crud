@@ -23,21 +23,30 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">Nombre (cargo)</th>
-            <th scope="col">Edad</th>
-            <th scope="col">Fecha Contratacion</th>
-            <th scope="col">Acciones</th>
+            <th [appSort]="users" data-order="desc" data-name="name" scope="col" (onSortEvent)="sortEventOnParent($event)"><div class="d-flex justify-content-center">Nombre (cargo)</div>
+              <span *ngIf="order=='asc' && property=='name'" style="cursor: pointer;" class="material-icons home">arrow_drop_up</span>
+              <span *ngIf="order=='desc' && property=='name'" style="cursor: pointer;" class="material-icons home">arrow_drop_down</span>
+            </th>
+            <th [appSort]="users" data-order="desc" data-name="age" scope="col" (onSortEvent)="sortEventOnParent($event)"><div class="d-flex justify-content-center">Edad</div>
+              <span *ngIf="order=='asc' && property=='age'" style="cursor: pointer;" class="material-icons home">arrow_drop_up</span>
+              <span *ngIf="order=='desc' && property=='age'" style="cursor: pointer;" class="material-icons home">arrow_drop_down</span>
+            </th>
+            <th [appSort]="users" data-order="desc" data-name="dateContract" data-type="date" scope="col" (onSortEvent)="sortEventOnParent($event)"><div class="d-flex justify-content-center">Fecha Contratacion</div>
+              <span *ngIf="order=='asc' && property=='dateContract'" style="cursor: pointer;" class="material-icons home">arrow_drop_up</span>
+              <span *ngIf="order=='desc' && property=='dateContract'" style="cursor: pointer;" class="material-icons home">arrow_drop_down</span>
+            </th>
+            <th scope="col"><div class="d-flex justify-content-center">Acciones</div></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of users | LockFilter: 'name': search">
            
-            <td>{{user.data.name}} {{user.data.cargo}} </td>
-            <td>{{user.data.age}}</td>
-            <td>{{user.data.dateContract}}</td>
-            <td><span style="cursor: pointer;" (click)="edit()" class="material-icons home">create</span>
+            <td><div class="d-flex justify-content-center">{{user.data.name}}</div> <div class="d-flex justify-content-center">{{user.data.cargo}}</div> </td>
+            <td><div class="d-flex justify-content-center">{{user.data.age}}</div></td>
+            <td><div class="d-flex justify-content-center">{{user.data.dateContract}}</div></td>
+            <td><div class="d-flex justify-content-center"><span style="cursor: pointer;" (click)="edit()" class="material-icons home">create</span>
               <span style="cursor: pointer;" (click)="see()"class="material-icons home">remove_red_eye</span>
-              <span style="cursor: pointer;" (click)="delete(user)" class="material-icons home">delete</span>
+              <span style="cursor: pointer;" (click)="delete(user)" class="material-icons home">delete</span></div>
             </td>
           </tr>
          

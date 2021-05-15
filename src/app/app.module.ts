@@ -18,6 +18,8 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 import { MbscModule } from '@mobiscroll/angular';
 import { LockFilterPipe } from './pipe/pipe';
+import { SortDirective } from './directive/sort.directive';
+
 
 
 const config = {
@@ -36,10 +38,10 @@ const config = {
     ListComponent,
     NewComponent,
     EditComponent,
-    ReadComponent
+    ReadComponent,
+    SortDirective
   ],
   imports: [
-   
     MbscModule,
     ReactiveFormsModule,
     NgBootstrapFormValidationModule.forRoot(),

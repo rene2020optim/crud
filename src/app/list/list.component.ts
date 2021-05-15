@@ -10,19 +10,15 @@ import { ApiService } from '../api.service';
 export class ListComponent implements OnInit {
   users:any=[]
   search:any=""
-  constructor(private router:Router,private api:ApiService) { 
-   
-  }
+  order:any
+  property:any
+  constructor(private router:Router,private api:ApiService) { }
 
   ngOnInit(): void {
   }
   
   ngAfterViewInit(){
-    
     this.getAllUsers()
-  }
-  ngOnDestroy(){
-    this.users=[]
   }
   
   goToPage(): void{
@@ -30,9 +26,9 @@ export class ListComponent implements OnInit {
   }
 
 getAllUsers(){
-  this.users=[]
+  
   this.api.getUsers().subscribe((res)=>{
-    
+    this.users=[]
     res.forEach((item)=>{
       let user={id:item.payload.doc.id,
         data:item.payload.doc.data()}
@@ -45,14 +41,21 @@ edit(){
 
 }
 delete(i:any){
-
- console.log(i)
+  
+ this.users=this.users.filter((item:any)=>{
+     return item.id != i.id
+ })
+ console.log(this.users)
  this.api.delete(i.id).then(res=>{
-  this.getAllUsers()
  }, err => console.error(err))
 }
 see(){
   
+}
+sortEventOnParent(e:any){
+  this.property=e.property
+  this.order=e.order
+  console.log(e)
 }
 
 }
