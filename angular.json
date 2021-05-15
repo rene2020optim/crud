@@ -32,7 +32,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/@mobiscroll/angular-lite/dist/css/mobiscroll.min.css"
+              "./node_modules/@mobiscroll/angular-lite/dist/css/mobiscroll.min.css",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           },
