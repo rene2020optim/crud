@@ -1,4 +1,4 @@
-
+@import '~material-icons/iconfont/material-icons.css';
     body,html{
         height: 100%;
         width: 100%;
@@ -49,4 +49,7 @@
         border-radius: 50%;
         color:white;
         text-decoration:none;
+        }
+        .mbsc-ic.icon:before {
+            font-family: Ionicons;
         }
