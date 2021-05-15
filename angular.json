@@ -31,7 +31,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/@mobiscroll/angular-lite/dist/css/mobiscroll.min.css"
             ],
             "scripts": []
           },

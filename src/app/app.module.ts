@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+import { MbscModule } from '@mobiscroll/angular-lite';
 
 
 
@@ -36,6 +37,7 @@ const config = {
     ReadComponent
   ],
   imports: [
+    MbscModule,
     ReactiveFormsModule,
     NgBootstrapFormValidationModule.forRoot(),
     NgBootstrapFormValidationModule,

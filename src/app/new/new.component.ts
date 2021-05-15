@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import '@mobiscroll/angular-lite/dist/css/mobiscroll.min.css';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
-  name:any;
   date1: any;
-  usuario:any;
-  selectedCountry: any;
-  date2!: Date;
   countries:any;
   area:string='Administrativa';
   commission:number=10;
   position:any;
   invalidAge:boolean=false
-  age:any
   options1=[
     {id:0,name:"Fundador y CEO"},
     {id:1,name:"Recursos humanos"},
@@ -26,16 +24,17 @@ export class NewComponent implements OnInit {
     {id:0,name:"Programador"},
     {id:1,name:"Diseñador"},
   ]
+  age:any
   fg:FormGroup
   
-  constructor(private api:ApiService) {
+  constructor(private router:Router,private api:ApiService) {
     
     this.fg= new FormGroup({
       Name: new FormControl('', [
         Validators.required,
 
       ]),
-      DateBorn: new FormControl('', [
+      Birthday: new FormControl('', [
         Validators.required,
         this.ageRangeValidator
         
@@ -61,6 +60,14 @@ export class NewComponent implements OnInit {
         Validators.required,
       
       ]),
+      Position: new FormControl('', [
+        Validators.required,
+      
+      ]),
+      Commission: new FormControl(10, [
+        Validators.required,
+      
+      ]),
     })
    }
   
@@ -69,7 +76,41 @@ export class NewComponent implements OnInit {
     this.getCountries()
   }
   onSubmit() {
-    console.log(this.fg.value);
+    const timeDiff = Math.abs(Date.now() - new Date(this.fg.value.Birthday.year, this.fg.value.Birthday.month-1, this.fg.value.Birthday.day).getTime());
+      this.age = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
+    console.log(this.age);
+    if(this.position =='Fundador y CEO'){
+      let user={
+        name:this.fg.value.Name,
+        birthday:this.fg.value.Birthday.year+'/'+this.fg.value.Birthday.month+'/'+this.fg.value.Birthday.day,
+        country:this.fg.value.Country,
+        username:this.fg.value.Username,
+        dateContract:this.fg.value.DateContract.year+'/'+this.fg.value.DateContract.month+'/'+this.fg.value.DateContract.day,
+        status:this.fg.value.Status,
+        area:this.fg.value.Area,
+        cargo:this.fg.value.Position,
+        commission:this.fg.value.Commission,
+        age:this.age
+      }
+       this.api.newUser(user).then((res)=>{
+        this.router.navigate(['/list'])
+       }, err => console.error(err))
+    }else{
+      let user={
+        name:this.fg.value.Name,
+        birthday:this.fg.value.Birthday.year+'/'+this.fg.value.Birthday.month+'/'+this.fg.value.Birthday.day,
+        country:this.fg.value.Country,
+        username:this.fg.value.Username,
+        dateContract:this.fg.value.DateContract.year+'/'+this.fg.value.DateContract.month+'/'+this.fg.value.DateContract.day,
+        status:this.fg.value.Status,
+        area:this.fg.value.Area,
+        cargo:this.fg.value.Position,
+        age:this.age
+      }
+      this.api.newUser(user).then((res)=>{
+          this.router.navigate(['/list'])
+      }, err => console.error(err))
+    }
   }
   ageRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
     console.log(control)
@@ -92,19 +133,21 @@ export class NewComponent implements OnInit {
     }, err => console.error(err))
   }
   onChangeCommission(e:any){
-    console.log(e.target.value)
+    
     this.commission=e.target.value
   }
-  onChangePosition(e:any){
-    console.log(e.target.value)
-    this.position=e.target.value
+  onChangeArea(e:any){
    
+    var i=this.fg.get("Position")
+    if(i!=null){  i.reset()}
+  
   }
-  areaSelect(area:string){
-    this.area=area;
+  onChangePosition(e:any){
+   
+    this.position=e.target.value
     
-    this.position=undefined
-    console.log(this.position)
   }
+ 
+ 
 
 }

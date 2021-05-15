@@ -30,23 +30,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let user of users ">
+           
+            <td>{{user.name}} {{user.cargo}} </td>
+            <td>{{user.age}}</td>
+            <td>{{user.dateContract}}</td>
+            <td>Acciones</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+         
+         
         </tbody>
       </table>
       <button type="button" (click)="goToPage()" class="btn btn-primary">+ Crear nuevo empleado</button>
