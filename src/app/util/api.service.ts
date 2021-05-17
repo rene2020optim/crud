@@ -19,4 +19,10 @@ export class ApiService {
  delete(id:any){
   return this.db.collection('users').doc(id).delete();
  }
+ getUser(id:any){
+  return this.db.collection('users').doc(id).valueChanges();
+ }
+ updateUser(id:any,data:any){
+  return this.db.collection('users').doc(id).set(data);
+ }
 }

@@ -23,15 +23,15 @@
     <table class="table">
         <thead>
           <tr>
-            <th [appSort]="users" data-order="desc" data-name="name" scope="col" (onSortEvent)="sortEventOnParent($event)"><div class="d-flex justify-content-center">Nombre (cargo)</div>
+            <th [appSort]="users" data-order="desc" data-name="name" scope="col" (onSortEvent)="sortEventOnParent($event)">Nombre (cargo)
               <span *ngIf="order=='asc' && property=='name'" style="cursor: pointer;" class="material-icons home">arrow_drop_up</span>
               <span *ngIf="order=='desc' && property=='name'" style="cursor: pointer;" class="material-icons home">arrow_drop_down</span>
             </th>
-            <th [appSort]="users" data-order="desc" data-name="age" scope="col" (onSortEvent)="sortEventOnParent($event)"><div class="d-flex justify-content-center">Edad</div>
+            <th [appSort]="users" data-order="desc" data-name="age" scope="col" (onSortEvent)="sortEventOnParent($event)">Edad
               <span *ngIf="order=='asc' && property=='age'" style="cursor: pointer;" class="material-icons home">arrow_drop_up</span>
               <span *ngIf="order=='desc' && property=='age'" style="cursor: pointer;" class="material-icons home">arrow_drop_down</span>
             </th>
-            <th [appSort]="users" data-order="desc" data-name="dateContract" data-type="date" scope="col" (onSortEvent)="sortEventOnParent($event)"><div class="d-flex justify-content-center">Fecha Contratacion</div>
+            <th [appSort]="users" data-order="desc" data-name="dateContract" data-type="date" scope="col" (onSortEvent)="sortEventOnParent($event)">Fecha Contratacion
               <span *ngIf="order=='asc' && property=='dateContract'" style="cursor: pointer;" class="material-icons home">arrow_drop_up</span>
               <span *ngIf="order=='desc' && property=='dateContract'" style="cursor: pointer;" class="material-icons home">arrow_drop_down</span>
             </th>
@@ -44,7 +44,8 @@
             <td><div class="d-flex justify-content-center">{{user.data.name}}</div> <div class="d-flex justify-content-center">{{user.data.cargo}}</div> </td>
             <td><div class="d-flex justify-content-center">{{user.data.age}}</div></td>
             <td><div class="d-flex justify-content-center">{{user.data.dateContract}}</div></td>
-            <td><div class="d-flex justify-content-center"><span style="cursor: pointer;" (click)="edit()" class="material-icons home">create</span>
+            <td><div class="d-flex justify-content-center">
+              <a [routerLink]="['/edit',user]"><span style="cursor: pointer;color: black;" (click)="edit()" class="material-icons home">create</span></a>
               <a [routerLink]="['/read',user.data]"> <span style="cursor: pointer;color: black;" class="material-icons home">remove_red_eye</span> </a> 
              
               <span style="cursor: pointer;" (click)="delete(user)" class="material-icons home">delete</span></div>

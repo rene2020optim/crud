@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
+import { ListComponent } from './components/list/list.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { NewComponent } from './new/new.component';
-import { EditComponent } from './edit/edit.component';
-import { ReadComponent } from './read/read.component';
+import { NewComponent } from './components/new/new.component';
+import { EditComponent } from './components//edit/edit.component';
+import { ReadComponent } from './components/read/read.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
